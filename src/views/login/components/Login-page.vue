@@ -17,21 +17,35 @@
             <span>手机号登录</span>
           </span>
         </template>
-        手机
+        <LoginTel />
       </el-tab-pane>
     </el-tabs>
+    <div class="extra">
+      <div class="save-psd">
+        <el-checkbox v-model="isSavePsd" label="记住密码" size="large" />
+      </div>
+      <div>
+        <el-link type="primary">忘记密码</el-link>
+      </div>
+    </div>
+    <el-button type="primary" class="login-btn">登录</el-button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import LoginAccount from './Login-account.vue'
+import LoginTel from './Login-tel.vue'
 export default defineComponent({
   components: {
-    LoginAccount
+    LoginAccount,
+    LoginTel
   },
   setup() {
-    return {}
+    const isSavePsd = ref(false)
+    return {
+      isSavePsd
+    }
   }
 })
 </script>
@@ -40,5 +54,12 @@ export default defineComponent({
 .login-page {
   width: 320px;
   height: 353px;
+  .extra {
+    display: flex;
+    justify-content: space-between;
+  }
+  .login-btn {
+    width: 100%;
+  }
 }
 </style>
